@@ -1,0 +1,16 @@
+//var controller = require('../controllers/home')();
+
+// Modulo de rota para home
+module.exports = function(app){
+  // Rota deault de teste
+  // app.get('/');
+
+  var controller = app.controller.home;
+
+  // Rota para o index.ejs na /app/view
+  app.get('/index', controller.index);
+
+  // Rota direta para aplicação
+  app.get('/', controller.index);
+
+}

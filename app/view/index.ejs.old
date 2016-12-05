@@ -1,0 +1,14 @@
+
+
+<html>
+
+  <head>
+    <meta="charset=utf-8"/>
+    <title>Bem Vindos.</title>
+  </head>
+
+    <body>
+       <h1>Bem-vindos ao <%=nome%></h1>
+    </body>
+
+</html>

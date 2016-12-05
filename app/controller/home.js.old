@@ -1,0 +1,13 @@
+
+
+
+module.exports = function (){
+  // Controller da aplicação
+  var controller = {};
+
+  controller.index = function (req, res){
+    res.render('index', {nome : 'Contatooh'});
+  }
+
+  return controller;
+}
