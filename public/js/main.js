@@ -1,4 +1,6 @@
-        var app = angular.module("contatooh", ['ngRoute']);
+
+        // Substituting $http for $resource
+        var app = angular.module("contatooh", ['ngRoute', 'ngResource']);
         app.config(function($routeProvider) {
         $routeProvider
         .when('/home', {
@@ -21,20 +23,27 @@
           $scope.message = 'Contato';
         });
 
-        app.controller("ContatosController", function($scope, $http){
+        // Substituting $http for $resource
+        app.controller("ContatosController", function($scope, $resource){
            $scope.message = 'Contatos';
            $scope.filtro = "";
            $scope.contatos = [];
 
+           var Contato = $resource('/contatos');
+
            // Express connection
-           $http.get('/contatos')
-           .success(function(data) {
-             $scope.contatos = data;
-           })
-           .error(function(statusText) {
-             console.log("Não foi possível obter a lista de contatos");
-             console.log(statusText);
-          });
+           function buscaContatos() {
+              Contato.query(
+                  function(contatos) {
+                    $scope.contatos = contatos;
+                  },
+                  function(erro) {
+                    console.log("Não foi possível obter a lista de contatos");
+                    console.log(erro);
+                  }
+              );
+            }
+            buscaContatos();
           ////////////////
 
           $scope.total = 0;
