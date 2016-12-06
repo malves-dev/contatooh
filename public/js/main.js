@@ -44,10 +44,10 @@
               );
             }
             buscaContatos();
-          ////////////////
+            ////////////////
 
-          $scope.total = 0;
-          $scope.incrementa = function(){
+            $scope.total = 0;
+            $scope.incrementa = function(){
             $scope.total++;
           };
         });
